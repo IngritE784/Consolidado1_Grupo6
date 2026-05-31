@@ -1,8 +1,7 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-
-import sequelize from "./config/database.js";
+import { sequelize } from "./config/database.js";
 
 dotenv.config();
 
@@ -24,12 +23,12 @@ const PORT = process.env.PORT || 3000;
 
 sequelize.sync()
     .then(() => {
-        console.log("✅ Tablas sincronizadas correctamente.");
+        console.log("Tablas sincronizadas correctamente.");
 
         app.listen(PORT, () => {
-            console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`);
+            console.log(`Servidor corriendo en http://localhost:${PORT}`);
         });
     })
     .catch((error) => {
-        console.error("❌ Error al sincronizar la base de datos:", error);
+        console.error("Error al sincronizar la base de datos:", error);
     });
