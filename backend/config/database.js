@@ -1,28 +1,19 @@
-const { Sequelize } = require('sequelize');
-require('dotenv').config();
+import { Sequelize } from "sequelize";
 
-// Configuración para proyecto local (MySQL)
-const sequelize = new Sequelize(
-    process.env.DB_NAME || 'biblioteca_local', 
-    process.env.DB_USER || 'root', 
-    process.env.DB_PASSWORD || '', 
-    {
-        host: process.env.DB_HOST || 'localhost',
-        dialect: 'mysql',
-        logging: false // Cambia a true si quieres ver las consultas SQL en consola
-    }
-);
+// Configuración de la conexión a MySQL usando XAMPP
+const sequelize = new Sequelize("biblioteca_web", "root", "", {
+    host: "localhost",
+    dialect: "mysql",
+    port: 3306,
+    logging: false // Esto evita que la consola se llene de mensajes de SQL
+});
 
-// Probar la conexión
-const testConnection = async () => {
-    try {
-        await sequelize.authenticate();
-        console.log('✅ Conexión a la base de datos MySQL establecida correctamente.');
-    } catch (error) {
-        console.error('❌ No se pudo conectar a la base de datos:', error);
-    }
-};
+try {
+    // Probamos la conexión
+    await sequelize.authenticate();
+    console.log("✅ Conexión con MySQL (XAMPP) establecida con éxito.");
+} catch (error) {
+    console.error("❌ Error al conectar con la base de datos:", error);
+}
 
-testConnection();
-
-module.exports = sequelize;
+export default sequelize;

@@ -1,34 +1,35 @@
-const express = require('express');
-const cors = require('cors');
-require('dotenv').config();
+import express from "express";
+import cors from "cors";
+import dotenv from "dotenv";
 
-// Inicializamos la app
+import sequelize from "./config/database.js";
+
+dotenv.config();
+
 const app = express();
 
 // Middlewares
-app.use(cors()); // Permite peticiones del frontend
-app.use(express.json()); // Permite recibir JSON en el body
+app.use(cors());
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Importar conexión a base de datos
-const sequelize = require('./config/database');
-
 // Ruta de prueba
-app.get('/', (req, res) => {
-    res.json({ mensaje: '¡Bienvenido a la API del proyecto Biblioteca Local!' });
+app.get("/", (req, res) => {
+    res.json({
+        mensaje: "¡Bienvenido a la API del proyecto Biblioteca Local!"
+    });
 });
 
-// Configuración del Puerto
 const PORT = process.env.PORT || 3000;
 
-// Sincronizar BD y levantar servidor
-sequelize.sync({ alter: true }) // alter: true actualiza las tablas si hacemos cambios en los modelos sin borrarlas
+sequelize.sync()
     .then(() => {
-        console.log('Tablas sincronizadas correctamente.');
+        console.log("✅ Tablas sincronizadas correctamente.");
+
         app.listen(PORT, () => {
-            console.log(`🚀 Servidor corriendo localmente en: http://localhost:${PORT}`);
+            console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`);
         });
     })
-    .catch(error => {
-        console.error('Error al sincronizar la base de datos:', error);
+    .catch((error) => {
+        console.error("❌ Error al sincronizar la base de datos:", error);
     });
