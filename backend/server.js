@@ -35,5 +35,5 @@ app.get("/", (req, res) => {
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
-    console.log(`Servidor y Frontend unidos en http://localhost:${PORT}`);
+    console.log(`Servidor en http://localhost:${PORT}`);
 });
