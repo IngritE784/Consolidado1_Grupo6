@@ -1,6 +1,7 @@
 import mysql from 'mysql2/promise';
 import { Sequelize, DataTypes } from 'sequelize';
 import dotenv from 'dotenv';
+import bcrypt from 'bcrypt';
 
 dotenv.config();
 
@@ -64,7 +65,7 @@ const Prestamo = sequelize.define('Prestamo', {
     timestamps: false
 });
 
-// --- PASO 4: RELACIONES [cite: 98-102] ---
+// --- PASO 4: RELACIONES 
 Usuario.hasMany(Prestamo, { foreignKey: 'usuario_id' });
 Prestamo.belongsTo(Usuario, { foreignKey: 'usuario_id' });
 
@@ -77,6 +78,20 @@ try {
     await sequelize.authenticate();
     await sequelize.sync({ alter: true });
     console.log('Todas las tablas han sido creadas/sincronizadas correctamente.');
+
+    const adminExists = await Usuario.findOne({ where: { email: 'admin@admin.com' } });
+    if (!adminExists) {
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash('admin123', salt);
+        await Usuario.create({
+            nombre: 'Administrador',
+            email: 'admin@admin.com',
+            password: hashedPassword,
+            rol: 'admin'
+        });
+        console.log('Usuario administrador creado por defecto (admin@admin.com / admin123).');
+    }
+
 } catch (error) {
     console.error(' Error al sincronizar las tablas:', error);
 }
