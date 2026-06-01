@@ -1,9 +1,18 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import { sequelize } from "./config/database.js";
+import path from "path";
+import { fileURLToPath } from "url";
 
 dotenv.config();
+
+// Importamos base de datos y rutas
+import { sequelize } from "./config/database.js";
+import authRoutes from "./routes/authRoutes.js";
+
+// 3. Configuramos las rutas de carpetas 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 
@@ -12,26 +21,19 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-import authRoutes from "./routes/authRoutes.js";
+//rutas del backend
 app.use("/api/auth", authRoutes);
 
-// Ruta de prueba
+// Conectamos la carpeta frontend
+const frontendPath = path.join(__dirname, '../frontend');
+app.use(express.static(frontendPath));
+
 app.get("/", (req, res) => {
-    res.json({
-        mensaje: "¡Bienvenido a la API del proyecto Biblioteca Local!"
-    });
+    res.sendFile(path.join(frontendPath, 'index.html'));
 });
 
 const PORT = process.env.PORT || 3000;
 
-sequelize.sync()
-    .then(() => {
-        console.log("Tablas sincronizadas correctamente.");
-
-        app.listen(PORT, () => {
-            console.log(`Servidor corriendo en http://localhost:${PORT}`);
-        });
-    })
-    .catch((error) => {
-        console.error("Error al sincronizar la base de datos:", error);
-    });
+app.listen(PORT, () => {
+    console.log(`Servidor y Frontend unidos en http://localhost:${PORT}`);
+});
