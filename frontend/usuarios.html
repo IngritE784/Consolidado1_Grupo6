@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestión de Usuarios (Admin)</title>
+</head>
+<body>
+    <nav>
+        <a href="libros.html">Catálogo Libros</a> | 
+        <a href="prestamos.html">Ver Préstamos</a> | 
+        <a href="usuarios.html">Gestión de Usuarios</a> |
+        <button onclick="cerrarSesion()">Cerrar Sesión</button>
+    </nav>
+    <hr>
+    <h2>Gestión de Usuarios</h2>
+    
+    <h3>Crear Nuevo Usuario</h3>
+    <form id="formUsuario">
+        <input type="text" id="nombre" placeholder="Nombre" required>
+        <input type="email" id="email" placeholder="Correo" required>
+        <input type="password" id="password" placeholder="Contraseña" required>
+        <select id="rol">
+            <option value="usuario">Usuario</option>
+            <option value="admin">Administrador</option>
+        </select>
+        <button type="submit">Crear</button>
+    </form>
+    <hr>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Rol</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody id="tablaUsuarios"></tbody>
+    </table>
+
+    <script src="js/session.js"></script>
+    <script src="js/usuarios.js"></script>
+</body>
+</html>
