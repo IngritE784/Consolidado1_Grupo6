@@ -10,6 +10,8 @@ dotenv.config();
 import { sequelize } from "./config/database.js";
 import authRoutes from "./routes/authRoutes.js";
 import usuarioRoutes from "./routes/usuarioRoutes.js";
+import libroRoutes from "./routes/libroRoutes.js";
+import prestamoRoutes from "./routes/prestamoRoutes.js";
 
 // 3. Configuramos las rutas de carpetas 
 const __filename = fileURLToPath(import.meta.url);
@@ -25,6 +27,8 @@ app.use(express.urlencoded({ extended: true }));
 //rutas del backend
 app.use("/api/auth", authRoutes);
 app.use("/api/usuarios", usuarioRoutes);
+app.use("/api/libros", libroRoutes);
+app.use("/api/prestamos", prestamoRoutes);
 
 // Conectamos la carpeta frontend
 const frontendPath = path.join(__dirname, '../frontend');
