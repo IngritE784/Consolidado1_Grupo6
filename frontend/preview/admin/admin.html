@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Panel Admin - Usuarios</title>
+</head>
+<body>
+	<header>
+		<h1>Panel de Administrador</h1>
+		<p>Gestion basica de usuarios</p>
+		<nav>
+			<a href="../../index.html">Inicio</a> |
+			<a href="../../login.html">Login</a>
+		</nav>
+		<hr>
+	</header>
+
+	<main>
+		<section>
+			<h2>Sesion</h2>
+			<p id="estadoSesion">Token no verificado</p>
+			<button id="btnCerrarSesion" type="button">Cerrar sesion</button>
+		</section>
+
+		<hr>
+
+		<section>
+			<h2>Crear Usuario</h2>
+			<form id="formCrearUsuario">
+				<label for="nombre">Nombre</label><br>
+				<input id="nombre" name="nombre" type="text" required><br><br>
+
+				<label for="email">Email</label><br>
+				<input id="email" name="email" type="email" required><br><br>
+
+				<label for="password">Password</label><br>
+				<input id="password" name="password" type="password" required><br><br>
+
+				<label for="rol">Rol</label><br>
+				<select id="rol" name="rol" required>
+					<option value="usuario">usuario</option>
+					<option value="admin">admin</option>
+				</select><br><br>
+
+				<button type="submit">Crear usuario</button>
+			</form>
+			<p id="mensajeCrear"></p>
+		</section>
+
+		<hr>
+
+		<section>
+			<h2>Lista de Usuarios</h2>
+			<button id="btnCargarUsuarios" type="button">Cargar usuarios</button>
+			<ul id="listaUsuarios"></ul>
+		</section>
+	</main>
+
+</body>
+</html>
