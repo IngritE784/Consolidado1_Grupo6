@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Libros - Sistema de Biblioteca</title>
+</head>
+
+<body>
+
+    <nav>
+        <h2>Biblioteca Local</h2>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="libros.html">Libros</a></li>
+            <li><a href="prestamo.html">Préstamos</a></li>
+            <li><a href="#" id="btnCerrarSesion">Cerrar Sesión</a></li>
+        </ul>
+    </nav>
+
+    <hr>
+
+    <main>
+        <h1>Catálogo de Libros</h1>
+
+        <!-- ===== BUSCADOR ===== -->
+        <section>
+            <label for="buscarTitulo">Buscar por título:</label>
+            <input type="text" id="buscarTitulo" placeholder="Ej: Cien años...">
+            <button onclick="cargarLibros()">Buscar</button>
+            <button onclick="document.getElementById('buscarTitulo').value=''; cargarLibros();">Ver todos</button>
+        </section>
+
+        <br>
+
+        <!-- ===== TABLA DE LIBROS ===== -->
+        <table border="1" cellpadding="6" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Código</th>
+                    <th>Título</th>
+                    <th>Autor</th>
+                    <th>Categoría</th>
+                    <th>Disponibles</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody id="tablaLibros">
+                <tr>
+                    <td colspan="7">Cargando...</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <hr>
+
+        <!-- ===== PANEL ADMIN: AGREGAR LIBRO ===== -->
+        <section id="adminPanel" style="display:none;">
+            <h2>Panel Admin — Agregar Libro</h2>
+            <form id="formLibro">
+                <label for="codigo">Código:</label>
+                <input type="text" id="codigo" placeholder="Ej: LIB-001" required>
+                <br><br>
+
+                <label for="titulo">Título:</label>
+                <input type="text" id="titulo" placeholder="Ej: Cien Años de Soledad" required>
+                <br><br>
+
+                <label for="autor">Autor:</label>
+                <input type="text" id="autor" placeholder="Ej: Gabriel García Márquez" required>
+                <br><br>
+
+                <label for="categoria">Categoría:</label>
+                <input type="text" id="categoria" placeholder="Ej: Novela" required>
+                <br><br>
+
+                <label for="cantidad">Cantidad disponible:</label>
+                <input type="number" id="cantidad" min="0" placeholder="Ej: 5" required>
+                <br><br>
+
+                <button type="submit">Agregar Libro</button>
+                <button type="reset">Limpiar</button>
+            </form>
+            <p id="mensajeLibro"></p>
+        </section>
+    </main>
+
+    <!-- Scripts: primero el helper compartido, luego la lógica -->
+    <script src="js/api.js"></script>
+    <script src="js/libro.js"></script>
+    <script>
+        // Cerrar sesión
+        document.getElementById('btnCerrarSesion').addEventListener('click', (e) => {
+            e.preventDefault();
+            localStorage.removeItem('token');
+            window.location.href = '/login.html';
+        });
+
+        // Buscar por título al presionar Enter
+        document.getElementById('buscarTitulo').addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') cargarLibros();
+        });
+    </script>
+
+</body>
+
+</html>

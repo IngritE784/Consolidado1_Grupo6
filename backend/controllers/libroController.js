@@ -24,11 +24,12 @@ export const obtenerLibros = async (req, res) => {
 
 export const crearLibro = async (req, res) => {
     try {
-        const { titulo, autor, categoria, cantidad } = req.body;
-        const nuevoLibro = await Libro.create({ titulo, autor, categoria, cantidad });
+        const { codigo, titulo, autor, categoria, cantidad } = req.body;
+        const nuevoLibro = await Libro.create({ codigo, titulo, autor, categoria, cantidad });
         res.status(201).json({ mensaje: 'Libro creado exitosamente', libro: nuevoLibro });
     } catch (error) {
-        res.status(500).json({ error: 'Error al crear el libro.' });
+        console.error(error);
+        res.status(500).json({ error: error.message || 'Error al crear el libro.' });
     }
 };
 

@@ -1,13 +1,51 @@
 document.addEventListener('DOMContentLoaded', () => {
+    requireAuth();
     cargarLibros();
     verificarRolAdmin();
+
+    // ── Agregar libro (solo admin) ──────────────────────────────
+    document.getElementById('formLibro')?.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const msg = document.getElementById('mensajeLibro');
+
+        const data = {
+            codigo: document.getElementById('codigo').value.trim(),
+            titulo: document.getElementById('titulo').value.trim(),
+            autor: document.getElementById('autor').value.trim(),
+            categoria: document.getElementById('categoria').value.trim(),
+            cantidad: parseInt(document.getElementById('cantidad').value)
+        };
+
+        const res = await fetch('/api/libros', {
+            method: 'POST',
+            headers: getAuthHeaders(),
+            body: JSON.stringify(data)
+        });
+
+        const json = await res.json();
+        if (res.ok) {
+            if (msg) msg.textContent = '✔ Libro creado correctamente.';
+            document.getElementById('formLibro').reset();
+            cargarLibros();
+        } else {
+            if (msg) msg.textContent = '✖ ' + (json.error || 'Error al crear el libro.');
+        }
+    });
 });
 
 async function cargarLibros() {
-    const res = await fetch('/api/libros', { headers: getAuthHeaders() });
+    const titulo = document.getElementById('buscarTitulo')?.value || '';
+    const url = titulo ? `/api/libros?titulo=${encodeURIComponent(titulo)}` : '/api/libros';
+
+    const res = await fetch(url, { headers: getAuthHeaders() });
     const libros = await res.json();
     const tbody = document.getElementById('tablaLibros');
     tbody.innerHTML = '';
+
+    if (!libros.length) {
+        tbody.innerHTML = '<tr><td colspan="7">No se encontraron libros.</td></tr>';
+        return;
+    }
 
     libros.forEach(l => {
         tbody.innerHTML += `
@@ -16,6 +54,7 @@ async function cargarLibros() {
                 <td>${l.codigo}</td>
                 <td>${l.titulo}</td>
                 <td>${l.autor}</td>
+                <td>${l.categoria}</td>
                 <td>${l.cantidad}</td>
                 <td><button onclick="solicitar(${l.id})" ${l.cantidad <= 0 ? 'disabled' : ''}>Solicitar Préstamo</button></td>
             </tr>`;
@@ -24,7 +63,7 @@ async function cargarLibros() {
 
 async function solicitar(id) {
     const fecha = new Date();
-    fecha.setDate(fecha.getDate() + 7); // Devolución en 7 días
+    fecha.setDate(fecha.getDate() + 7);
 
     const res = await fetch('/api/prestamos', {
         method: 'POST',
@@ -32,17 +71,17 @@ async function solicitar(id) {
         body: JSON.stringify({ libro_id: id, fecha_devolucion: fecha.toISOString().split('T')[0] })
     });
 
+    const json = await res.json();
     if (res.ok) {
-        alert('Préstamo solicitado');
+        alert('✔ Préstamo solicitado correctamente.');
         cargarLibros();
     } else {
-        alert('Error al solicitar');
+        alert('✖ ' + (json.error || 'Error al solicitar el préstamo.'));
     }
 }
 
-// Lógica para el Admin (Mostrar formulario)
+// Muestra el panel admin si el usuario tiene rol admin
 function verificarRolAdmin() {
-    // Decodificar payload del token JWT de forma sencilla
     if (token) {
         const payload = JSON.parse(atob(token.split('.')[1]));
         if (payload.rol === 'admin') {
@@ -50,26 +89,3 @@ function verificarRolAdmin() {
         }
     }
 }
-
-document.getElementById('formLibro')?.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const data = {
-        codigo: document.getElementById('codigo').value,
-        titulo: document.getElementById('titulo').value,
-        autor: document.getElementById('autor').value,
-        categoria: document.getElementById('categoria').value,
-        cantidad: document.getElementById('cantidad').value
-    };
-
-    const res = await fetch('/api/libros', {
-        method: 'POST',
-        headers: getAuthHeaders(),
-        body: JSON.stringify(data)
-    });
-
-    if (res.ok) {
-        alert('Libro creado');
-        document.getElementById('formLibro').reset();
-        cargarLibros();
-    }
-});
