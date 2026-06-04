@@ -14,9 +14,21 @@ document.getElementById('formLogin').addEventListener('submit', async (e) => {
         const data = await response.json();
 
         if (response.ok) {
-            // Guardamos el token en la memoria del navegador
+            // 1. Guardamos el token y la información del usuario en la memoria del navegador
             localStorage.setItem('token', data.token);
-            alert('Bienvenido ' + data.mensaje);
+            localStorage.setItem('usuario', JSON.stringify(data.usuario));
+
+            alert('Bienvenido ' + data.usuario.nombre);
+
+            // 2. Lógica de redirección según el rol
+            if (data.usuario.rol === 'admin') {
+                // Redirige a la vista principal del administrador
+                window.location.href = 'usuarios.html'; 
+            } else {
+                // Redirige al catálogo de libros para el usuario normal
+                window.location.href = 'libros.html'; 
+            }
+
         } else {
             alert('Error: ' + data.error);
         }
