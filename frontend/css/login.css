@@ -10,7 +10,7 @@
     }
 }
 
-/* Animación sutil de pulso para el botón principal */
+/* Animación  para el botón principal */
 @keyframes pulseGlow {
     0% {
         box-shadow: 0 4px 12px rgba(90, 10, 23, 0.2);
@@ -106,7 +106,7 @@ body {
     color: #222222;
 }
 
-/* Estilos para las cajas de texto (inputs) */
+/* Estilos para los inputs */
 #formLogin input {
     width: 100%;
     padding: 14px;
@@ -156,7 +156,7 @@ body {
     box-shadow: 0 4px 12px rgba(90, 10, 23, 0.3);
 }
 
-   /*5. MENSAJES DE ERROR O ÉXITO */
+   /*5. MENSAJES ERROR O ÉXITO */
 #mensaje {
     margin-top: 20px;
     text-align: center;
