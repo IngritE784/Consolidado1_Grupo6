@@ -20,13 +20,17 @@ async function cargarLibros(busqueda = '') {
     }
 
     libros.forEach(l => {
-        let botonesAccion = `<button onclick="solicitar(${l.id})" ${l.cantidad <= 0 ? 'disabled' : ''}>Solicitar Préstamo</button>`;
+        let botonesAccion = '';
         
         if (isAdmin) {
-            botonesAccion += `
-                <button onclick="editarLibro(${l.id})" style="background-color: #f59e0b; margin-left: 5px;">Actualizar Stock</button>
-                <button onclick="eliminarLibro(${l.id})" style="background-color: #ef4444; margin-left: 5px;">Eliminar</button>
+            // El admin no pide prestado, solo administra
+            botonesAccion = `
+                <button onclick="editarLibro(${l.id})" class="btn-warning">Editar</button>
+                <button onclick="eliminarLibro(${l.id})" class="btn-danger">Eliminar</button>
             `;
+        } else {
+            // Usuario normal o sin sesión
+            botonesAccion = `<button onclick="solicitar(${l.id})" ${l.cantidad <= 0 ? 'disabled' : ''}>Solicitar Préstamo</button>`;
         }
 
         tbody.innerHTML += `
@@ -119,16 +123,24 @@ async function eliminarLibro(id) {
 }
 
 async function editarLibro(id) {
-    const nuevoStock = prompt('Ingrese la nueva cantidad (stock) para este libro:');
-    if (nuevoStock === null || nuevoStock.trim() === '') return;
-
-    // Obtenemos el libro actual para no borrar sus otros datos
+    // Obtenemos el libro actual primero para tener los datos por defecto
     const url = `/api/libros`;
     const resGet = await fetch(url, { headers: getAuthHeaders() });
     const libros = await resGet.json();
     const libroActual = libros.find(l => l.id === id);
 
     if (libroActual) {
+        const nuevoTitulo = prompt('Editar Título:', libroActual.titulo);
+        if (nuevoTitulo === null) return; // Canceló
+        
+        const nuevoAutor = prompt('Editar Autor:', libroActual.autor);
+        if (nuevoAutor === null) return; 
+        
+        const nuevoStock = prompt('Editar Stock:', libroActual.cantidad);
+        if (nuevoStock === null) return; 
+
+        libroActual.titulo = nuevoTitulo.trim() || libroActual.titulo;
+        libroActual.autor = nuevoAutor.trim() || libroActual.autor;
         libroActual.cantidad = parseInt(nuevoStock, 10);
         
         const resPut = await fetch(`/api/libros/${id}`, {
@@ -138,7 +150,7 @@ async function editarLibro(id) {
         });
 
         if (resPut.ok) {
-            alert('Stock del libro actualizado');
+            alert('Libro actualizado correctamente');
             cargarLibros();
         } else {
             alert('Error al actualizar el libro');

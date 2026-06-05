@@ -237,6 +237,25 @@ td button {
     border-radius: 6px;
 }
 
+/* Botones de Administrador */
+.btn-warning {
+    background-color: #f59e0b;
+    color: white;
+}
+
+.btn-warning:hover {
+    background-color: #d97706;
+}
+
+.btn-danger {
+    background-color: #ef4444;
+    color: white;
+    margin-left: 5px;
+}
+
+.btn-danger:hover {
+    background-color: #dc2626;
+}
 
 /*5. PANEL DE ADMINISTRADOR (FORMULARIO ABAJO)*/
 #adminPanel {

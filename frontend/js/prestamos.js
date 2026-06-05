@@ -16,15 +16,22 @@ async function cargarPrestamos() {
     const tbody = document.getElementById('tablaPrestamos');
     tbody.innerHTML = '';
 
+    if (!esAdmin) {
+        document.getElementById('thAccion').style.display = 'none';
+    }
+
     prestamos.forEach(p => {
-        let botonAccion = '-';
+        let tdAccion = '';
         if (esAdmin) {
+            let botonAccion = '-';
             if (p.estado === 'pendiente') {
-                botonAccion = `<button onclick="aprobar(${p.id})">Aprobar Préstamo</button>`;
+                botonAccion = `<button onclick="aprobar(${p.id})" class="btn-warning">Aprobar Préstamo</button>`;
             } else if (p.estado === 'prestado') {
-                botonAccion = `<button onclick="devolver(${p.id})">Registrar Devolución</button>`;
+                botonAccion = `<button onclick="devolver(${p.id})" class="btn-success">Registrar Devolución</button>`;
             }
+            tdAccion = `<td>${botonAccion}</td>`;
         }
+
         tbody.innerHTML += `
             <tr>
                 <td>${p.id}</td>
@@ -32,7 +39,7 @@ async function cargarPrestamos() {
                 <td>${p.Libro ? p.Libro.titulo : 'ID: ' + p.libro_id}</td>
                 <td>${p.fecha_devolucion}</td>
                 <td>${p.estado}</td>
-                <td>${botonAccion}</td>
+                ${tdAccion}
             </tr>`;
     });
 }

@@ -8,6 +8,7 @@
 <body>
     <nav>
         <a href="libros.html">Catálogo Libros</a>
+        <a href="prestamos.html">Ver Préstamos</a>
         <a href="usuarios.html" id="linkUsuarios" style="display: none;">Gestión de Usuarios</a>
         <button onclick="cerrarSesion()">Cerrar Sesión</button>
     </nav>
@@ -22,7 +23,7 @@
                 <th>Libro</th>
                 <th>Fecha Devolución</th>
                 <th>Estado</th>
-                <th>Acción</th>
+                <th id="thAccion">Acción</th>
             </tr>
         </thead>
         <tbody id="tablaPrestamos"></tbody>

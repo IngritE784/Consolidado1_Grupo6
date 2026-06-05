@@ -213,10 +213,9 @@ tr:hover td {
     color: #2d3748;
 }
 
-/* Botones en la tabla (Eliminar) */
+/* Botones en la tabla (Editar y Eliminar) */
 td button {
     padding: 8px 14px;
-    background-color: #e53e3e;
     color: white;
     border: none;
     border-radius: 6px;
@@ -226,6 +225,19 @@ td button {
     transition: background 0.3s ease;
 }
 
-td button:hover {
+.btn-warning {
+    background-color: #f59e0b;
+}
+
+.btn-warning:hover {
+    background-color: #d97706;
+}
+
+.btn-danger {
+    background-color: #e53e3e;
+    margin-left: 5px;
+}
+
+.btn-danger:hover {
     background-color: #c53030;
 }

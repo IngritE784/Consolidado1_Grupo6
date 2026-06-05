@@ -23,7 +23,10 @@ async function cargarUsuarios() {
                 <td>${u.nombre}</td>
                 <td>${u.email}</td>
                 <td>${u.rol}</td>
-                <td><button onclick="eliminarUsuario(${u.id})">Eliminar</button></td>
+                <td>
+                    <button onclick="editarUsuario(${u.id})" class="btn-warning">Editar</button>
+                    <button onclick="eliminarUsuario(${u.id})" class="btn-danger">Eliminar</button>
+                </td>
             </tr>`;
     });
 }
@@ -62,6 +65,48 @@ async function eliminarUsuario(id) {
         if (res.ok) {
             alert('Usuario eliminado');
             cargarUsuarios();
+        }
+    }
+}
+
+async function editarUsuario(id) {
+    // Obtenemos todos los usuarios para sacar la data actual del usuario
+    const resGet = await fetch('/api/usuarios', { headers: getAuthHeaders() });
+    const usuarios = await resGet.json();
+    const usuarioActual = usuarios.find(u => u.id === id);
+
+    if (usuarioActual) {
+        const nuevoNombre = prompt('Editar Nombre:', usuarioActual.nombre);
+        if (nuevoNombre === null) return;
+
+        const nuevoEmail = prompt('Editar Email:', usuarioActual.email);
+        if (nuevoEmail === null) return;
+
+        const nuevoRol = prompt('Editar Rol (admin o usuario):', usuarioActual.rol);
+        if (nuevoRol === null) return;
+
+        // Validar rol
+        if (nuevoRol !== 'admin' && nuevoRol !== 'usuario') {
+            alert('El rol debe ser "admin" o "usuario"');
+            return;
+        }
+
+        usuarioActual.nombre = nuevoNombre.trim() || usuarioActual.nombre;
+        usuarioActual.email = nuevoEmail.trim() || usuarioActual.email;
+        usuarioActual.rol = nuevoRol.trim() || usuarioActual.rol;
+
+        const resPut = await fetch(`/api/usuarios/${id}`, {
+            method: 'PUT',
+            headers: getAuthHeaders(),
+            body: JSON.stringify(usuarioActual)
+        });
+
+        if (resPut.ok) {
+            alert('Usuario actualizado correctamente');
+            cargarUsuarios();
+        } else {
+            const err = await resPut.json();
+            alert('Error al actualizar: ' + err.error);
         }
     }
 }
