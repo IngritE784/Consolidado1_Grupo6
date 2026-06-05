@@ -1,6 +1,8 @@
+let isAdmin = false;
+
 document.addEventListener('DOMContentLoaded', () => {
-    cargarLibros();
-    verificarRolAdmin();
+    verificarRolAdmin(); // Primero verificamos el rol
+    cargarLibros();      // Luego cargamos los libros para dibujar los botones correctos
 });
 
 async function cargarLibros(busqueda = '') {
@@ -18,6 +20,15 @@ async function cargarLibros(busqueda = '') {
     }
 
     libros.forEach(l => {
+        let botonesAccion = `<button onclick="solicitar(${l.id})" ${l.cantidad <= 0 ? 'disabled' : ''}>Solicitar Préstamo</button>`;
+        
+        if (isAdmin) {
+            botonesAccion += `
+                <button onclick="editarLibro(${l.id})" style="background-color: #f59e0b; margin-left: 5px;">Actualizar Stock</button>
+                <button onclick="eliminarLibro(${l.id})" style="background-color: #ef4444; margin-left: 5px;">Eliminar</button>
+            `;
+        }
+
         tbody.innerHTML += `
             <tr>
                 <td>${l.id}</td>
@@ -25,7 +36,7 @@ async function cargarLibros(busqueda = '') {
                 <td>${l.titulo}</td>
                 <td>${l.autor}</td>
                 <td>${l.cantidad}</td>
-                <td><button onclick="solicitar(${l.id})" ${l.cantidad <= 0 ? 'disabled' : ''}>Solicitar Préstamo</button></td>
+                <td>${botonesAccion}</td>
             </tr>`;
     });
 }
@@ -60,6 +71,7 @@ function verificarRolAdmin() {
     if (token) {
         const payload = JSON.parse(atob(token.split('.')[1]));
         if (payload.rol === 'admin') {
+            isAdmin = true;
             document.getElementById('adminPanel').style.display = 'block';
             const linkUsuarios = document.getElementById('linkUsuarios');
             if (linkUsuarios) linkUsuarios.style.display = 'inline';
@@ -89,3 +101,47 @@ document.getElementById('formLibro')?.addEventListener('submit', async (e) => {
         cargarLibros();
     }
 });
+
+async function eliminarLibro(id) {
+    if (!confirm('¿Estás seguro de eliminar este libro del catálogo?')) return;
+
+    const res = await fetch(`/api/libros/${id}`, {
+        method: 'DELETE',
+        headers: getAuthHeaders()
+    });
+
+    if (res.ok) {
+        alert('Libro eliminado correctamente');
+        cargarLibros();
+    } else {
+        alert('Error al eliminar el libro');
+    }
+}
+
+async function editarLibro(id) {
+    const nuevoStock = prompt('Ingrese la nueva cantidad (stock) para este libro:');
+    if (nuevoStock === null || nuevoStock.trim() === '') return;
+
+    // Obtenemos el libro actual para no borrar sus otros datos
+    const url = `/api/libros`;
+    const resGet = await fetch(url, { headers: getAuthHeaders() });
+    const libros = await resGet.json();
+    const libroActual = libros.find(l => l.id === id);
+
+    if (libroActual) {
+        libroActual.cantidad = parseInt(nuevoStock, 10);
+        
+        const resPut = await fetch(`/api/libros/${id}`, {
+            method: 'PUT',
+            headers: getAuthHeaders(),
+            body: JSON.stringify(libroActual)
+        });
+
+        if (resPut.ok) {
+            alert('Stock del libro actualizado');
+            cargarLibros();
+        } else {
+            alert('Error al actualizar el libro');
+        }
+    }
+}
