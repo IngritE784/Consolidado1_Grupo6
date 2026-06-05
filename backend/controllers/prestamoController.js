@@ -13,7 +13,7 @@ export const solicitarPrestamo = async (req, res) => {
         }
 
         // GENERADOR DE CÓDIGO DEL PDF
-        const codigoGenerado = crypto.randomBytes(4).toString("hex").toUpperCase(); // <-- USA EL CÓDIGO DEL PDF
+        const codigoGenerado = crypto.randomBytes(4).toString("hex").toUpperCase();
 
         const nuevoPrestamo = await Prestamo.create({
             codigo: codigoGenerado, // <-- GUÁRDALO EN LA BASE DE DATOS

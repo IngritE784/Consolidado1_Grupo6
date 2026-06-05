@@ -4,12 +4,7 @@ import dotenv from "dotenv";
 import path from "path";
 import { fileURLToPath } from "url";
 
-// Añadir en la sección de importaciones:
-import libroRoutes from "./routes/libroRoutes.js";
-import prestamoRoutes from "./routes/prestamoRoutes.js";
-
-
-
+// Importamos base de datos y rutas
 dotenv.config();
 
 // Importamos base de datos y rutas
@@ -35,12 +30,6 @@ app.use("/api/auth", authRoutes);
 app.use("/api/usuarios", usuarioRoutes);
 app.use("/api/libros", libroRoutes);
 app.use("/api/prestamos", prestamoRoutes);
-
-
-// Añadir debajo de app.use("/api/usuarios", usuarioRoutes);
-app.use("/api/libros", libroRoutes);
-app.use("/api/prestamos", prestamoRoutes);
-
 
 // Conectamos la carpeta frontend
 const frontendPath = path.join(__dirname, '../frontend');
