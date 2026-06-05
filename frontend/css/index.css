@@ -1,0 +1,167 @@
+/* ==========================================================================
+   1. ESTILOS GENERALES Y FONDO DE LA PÁGINA
+   ========================================================================== */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', 'Segoe UI', Helvetica, Arial, sans-serif;
+    background-color: #ffffff; 
+    color: #1f1f1f;
+}
+
+main {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+main > hr {
+    display: none !important;
+}
+
+/* Bienvenida Imponente */
+.bienvenida-container {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.bienvenida-container h1 {
+    color: #280101;
+    font-size: 36px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.bienvenida-container p {
+    color: #666666;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+/* ==========================================================================
+   2. BARRA DE NAVEGACIÓN (NAV)
+   ========================================================================== */
+nav {
+    background: linear-gradient(135deg, #280101 0%, #5A0A17 100%);
+    padding: 18px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 20px rgba(90, 10, 23, 0.15);
+}
+
+nav h2 {
+    color: #ffffff; 
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 15px;
+}
+
+nav ul li a {
+    color: #f3e6e8;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+}
+
+/* ==========================================================================
+   3. SECCIÓN DE TARJETAS INFORMATIVAS / MENÚ DE ACCESOS
+   ========================================================================== */
+.grid-accesos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+/* Tarjetas en Gris Cemento Cálido */
+.card-acceso {
+    background-color: #F4F3F0;
+    padding: 35px 30px;
+    border-radius: 16px;
+    box-sizing: border-box;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.06), 0 1px 12px rgba(90, 10, 23, 0.03);
+    border: 1px solid #e3e2de;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.card-acceso:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 22px 45px rgba(0, 0, 0, 0.09), 0 4px 15px rgba(90, 10, 23, 0.05);
+}
+
+.card-acceso h3 {
+    color: #5A0A17;
+    font-size: 20px;
+    font-weight: 800;
+    margin-top: 0;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.card-acceso p {
+    color: #4a4545;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+/* ==========================================================================
+   4. BOTONES CON TU ROJO VINO SÓLIDO (#7E091C)
+   ========================================================================== */
+.card-acceso a,
+main button {
+    display: inline-block;
+    padding: 14px 24px;
+    background-color: #7E091C !important;
+    color: #ffffff !important;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(126, 9, 28, 0.2);
+    border: none;
+    cursor: pointer;
+}
+
+.card-acceso a:hover,
+main button:hover {
+    background-color: #5A0A17 !important;
+    box-shadow: 0 6px 18px rgba(90, 10, 23, 0.45);
+    transform: translateY(-2px);
+}

@@ -1,5 +1,5 @@
 /* ==========================================================================
-   1. ESTILOS GENERALES Y FONDO DE LA PÁGINA (BLANCO PURO)
+   1. ESTILOS GENERALES Y CONFIGURACIÓN DEL CUERPO
    ========================================================================== */
 @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(20px); }
@@ -12,31 +12,35 @@ body {
     font-family: 'Montserrat', 'Segoe UI', Helvetica, Arial, sans-serif;
     background-color: #ffffff; 
     color: #1f1f1f;
+    display: grid;
+    grid-template-columns: 360px 1fr; 
+    gap: 30px;
+    padding: 0 40px 40px 40px;
+    box-sizing: border-box;
 }
 
-main {
-    max-width: 900px;
-    margin: 40px auto;
-    padding: 0 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+nav, 
+body > hr, 
+body > h2 {
+    grid-column: span 2;
 }
 
-main > hr, 
-#panelAdmin > hr {
-    display: none !important;
+body > hr {
+    display: none !important; 
 }
 
-main > h1 {
+body > h2 {
     color: #280101;
-    text-align: center;
-    margin-bottom: 10px;
+    margin: 30px 0 10px 0;
     font-size: 34px;
     font-weight: 800;
     letter-spacing: -0.5px;
     text-transform: uppercase;
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+body > h3 {
+    display: none !important; 
 }
 
 /* ==========================================================================
@@ -44,115 +48,101 @@ main > h1 {
    ========================================================================== */
 nav {
     background: linear-gradient(135deg, #280101 0%, #5A0A17 100%);
-    padding: 18px 40px;
+    padding: 20px 40px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: center; 
+    align-items: center;   
+    gap: 15px; 
     box-shadow: 0 4px 20px rgba(90, 10, 23, 0.15);
-}
-
-nav h2 {
-    color: #ffffff; 
-    margin: 0;
-    font-size: 20px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-}
-
-nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    gap: 15px;
-}
-
-nav ul li a {
-    color: #f3e6e8;
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 600;
-    padding: 8px 14px;
-    border-radius: 6px;
-    transition: all 0.3s ease;
-}
-
-nav ul li a:hover {
-    background-color: rgba(255, 255, 255, 0.15);
+    margin-left: -40px; 
+    margin-right: -40px;
     color: #ffffff;
 }
 
-/* ==========================================================================
-   3. MODO FLASHCARDS (TARJETAS GRIS CEMENTO CÁLIDO)
-   ========================================================================== */
-#seccionSolicitar, 
-#seccionPrestamos, 
-#panelAdmin {
-    background-color: #F4F3F0; 
-    padding: 40px;
-    border-radius: 16px;
-    color: #2b2b2b;
-    width: 100%;
-    box-sizing: border-box;
-    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.06), 0 1px 12px rgba(90, 10, 23, 0.03);
-    border: 1px solid #e3e2de;
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+nav a {
+    color: #ffffff !important; 
+    text-decoration: none !important; 
+    font-size: 14px;
+    font-weight: 700;
+    padding: 8px 16px;
+    border-radius: 6px;
+    background-color: rgba(255, 255, 255, 0.08); 
+    transition: all 0.3s ease;
+    display: inline-block;
 }
 
-#seccionSolicitar:hover, 
-#seccionPrestamos:hover, 
-#panelAdmin:hover {
+nav a:hover {
+    background-color: #7E091C !important; 
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+nav button {
+    background-color: #ffffff !important;
+    color: #5A0A17 !important; 
+    border: none !important;
+    border-radius: 6px !important;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-block;
+    font-family: inherit;
+}
+
+nav button:hover {
+    background-color: #f3e6e8 !important;
+    color: #7E091C !important;
+    transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   3. MODO FLASHCARDS (TARJETA CREAR USUARIO)
+   ========================================================================== */
+#formUsuario {
+    background-color: #F4F3F0; 
+    padding: 35px 30px;
+    border-radius: 16px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.06), 0 1px 12px rgba(90, 10, 23, 0.03);
+    border: 1px solid #e3e2de;
+    box-sizing: border-box;
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+#formUsuario:hover {
     transform: translateY(-4px);
     box-shadow: 0 22px 45px rgba(0, 0, 0, 0.09), 0 4px 15px rgba(90, 10, 23, 0.04);
 }
 
-main h2 {
+#formUsuario::before {
+    content: "CREAR NUEVO USUARIO";
+    display: block;
     color: #5A0A17; 
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 800;
-    margin-top: 0;
-    margin-bottom: 25px;
+    margin-bottom: 5px;
     text-transform: uppercase;
     letter-spacing: 1.5px;
     border-left: 5px solid #5A0A17;
-    padding-left: 15px;
+    padding-left: 12px;
 }
 
 /* ==========================================================================
-   4. ALINEACIÓN VERTICAL DE FORMULARIOS
+   4. INPUTS Y CAJAS DE TEXTO
    ========================================================================== */
-#formSolicitar, 
-#formCambiarEstado {
-    display: flex;
-    flex-direction: column;
-    gap: 14px; 
-}
-
-#formSolicitar br, 
-#formCambiarEstado br,
-#seccionPrestamos br {
-    display: none !important;
-}
-
-label {
-    display: block;
-    font-weight: 700;
-    color: #4a4545;
-    margin-bottom: 2px;
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-}
-
-input[type="text"], 
-input[type="date"], 
-input[type="number"], 
-select {
+#formUsuario input[type="text"], 
+#formUsuario input[type="email"], 
+#formUsuario input[type="password"], 
+#formUsuario select {
     width: 100%;
-    padding: 14px;
+    padding: 13px 14px;
     border: 1.5px solid #d1cfc9; 
     border-radius: 8px;
-    font-size: 15px;
+    font-size: 14px;
     outline: none;
     transition: all 0.3s ease;
     background-color: #ffffff;
@@ -161,87 +151,72 @@ select {
     font-family: inherit;
 }
 
-input:focus, 
-select:focus {
+#formUsuario input:focus, 
+#formUsuario select:focus {
     border-color: #5A0A17;
     box-shadow: 0 0 0 4px rgba(90, 10, 23, 0.15);
 }
 
 /* ==========================================================================
-   5. BOTONES PRINCIPALES CORREGIDOS CON TU COLOR (#7E091C)
+   5. BOTONES DE ACCIÓN (#7E091C)
    ========================================================================== */
-#formSolicitar button, 
-#formCambiarEstado button,
-button[type="submit"] {
+#formUsuario button[type="submit"] {
     width: 100%;
-    padding: 16px;
+    padding: 15px;
     background-color: #7E091C !important; 
-    background: #7E091C !important;
     color: #ffffff !important;           
     border: none !important;
     border-radius: 8px !important;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1.5px;
     cursor: pointer;
-    margin-top: 10px;
-    display: block;
+    margin-top: 5px;
     transition: all 0.2s ease;
     box-shadow: 0 4px 14px rgba(126, 9, 28, 0.25);
+    font-family: inherit;
 }
 
-#formSolicitar button:hover, 
-#formCambiarEstado button:hover {
+#formUsuario button[type="submit"]:hover {
     background-color: #5A0A17 !important; 
-    background: #5A0A17 !important;
     box-shadow: 0 6px 18px rgba(90, 10, 23, 0.45);
     transform: translateY(-2px);
 }
 
-/* ==========================================================================
-   6. SECCIÓN HISTORIAL, FILTROS Y TABLAS
-   ========================================================================== */
-#seccionPrestamos {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-#filtroEstado {
-    width: 100%;
-    max-width: 300px;
-}
-
-#seccionPrestamos button {
-    width: 100%;
-    max-width: 200px;
-    padding: 12px;
-    background-color: rgba(126, 9, 28, 0.08) !important;
-    color: #7E091C !important; 
-    border: 1px solid rgba(126, 9, 28, 0.2) !important;
-    border-radius: 8px;
-    font-size: 13px;
+table button {
+    padding: 8px 14px;
+    background-color: #7E091C !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 6px !important;
+    font-size: 11px;
     font-weight: 700;
     text-transform: uppercase;
     cursor: pointer;
+    box-shadow: 0 4px 10px rgba(126, 9, 28, 0.2);
     transition: all 0.2s ease;
+    font-family: inherit;
 }
 
-#seccionPrestamos button:hover {
-    background-color: #7E091C !important;
-    color: #ffffff !important;
-    box-shadow: 0 4px 12px rgba(126, 9, 28, 0.2);
+table button:hover {
+    background-color: #5A0A17 !important;
+    box-shadow: 0 6px 15px rgba(90, 10, 23, 0.4);
+    transform: translateY(-1px);
 }
 
+/* ==========================================================================
+   6. TABLA DE USUARIOS AL COSTADO DERECHO
+   ========================================================================== */
 table {
     width: 100%;
+    margin-top: 0;
     border-collapse: collapse;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
     border: none !important;
-    margin-top: 15px;
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 th {
@@ -251,16 +226,16 @@ th {
     text-transform: uppercase;
     letter-spacing: 0.5px;
     text-align: left;
-    padding: 16px;
-    font-size: 13px;
+    padding: 15px;
+    font-size: 12px;
     border: none !important;
 }
 
 td {
-    padding: 16px;
+    padding: 15px;
     border-bottom: 1px solid #eef0f2;
     color: #2b2b2b;
-    font-size: 14px;
+    font-size: 13px;
     background-color: #ffffff;
 }
 
@@ -270,12 +245,4 @@ tr:nth-child(even) td {
 
 tr:hover td {
     background-color: #fff2f3;
-}
-
-#mensajeSolicitar, 
-#mensajeAdmin {
-    margin-top: 10px;
-    text-align: center;
-    font-weight: 600;
-    color: #7E091C;
 }
