@@ -1,14 +1,21 @@
 /*ESTILOS GENERALES Y ANIMACIÓN DE ENTRADA */
 @keyframes fadeInPage {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 body {
     margin: 0;
     padding: 0;
     font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    background-color: #f8fafc; 
+    background-color: #f8fafc;
     color: #333333;
 }
 
@@ -19,8 +26,9 @@ main {
     animation: fadeInPage 0.5s ease-out forwards;
 }
 
-h1, h2 {
-    color: #280101; 
+h1,
+h2 {
+    color: #280101;
     font-weight: 700;
 }
 
@@ -58,7 +66,8 @@ nav ul {
     gap: 20px;
 }
 
-nav a, nav ul li a {
+nav a,
+nav ul li a {
     color: #f3e6e8;
     text-decoration: none;
     font-size: 15px;
@@ -68,7 +77,8 @@ nav a, nav ul li a {
     transition: all 0.3s ease;
 }
 
-nav a:hover, nav ul li a:hover {
+nav a:hover,
+nav ul li a:hover {
     background-color: rgba(255, 255, 255, 0.15);
     color: #ffffff;
 }
@@ -86,7 +96,7 @@ nav button {
 }
 
 nav button:hover {
-    background-color: #7e091c; 
+    background-color: #7e091c;
     border-color: transparent;
 }
 
@@ -106,7 +116,8 @@ section label {
     margin-right: 10px;
 }
 
-input[type="text"], input[type="number"] {
+input[type="text"],
+input[type="number"] {
     padding: 10px 14px;
     border: 1.5px solid #e2e8f0;
     border-radius: 8px;
@@ -116,7 +127,8 @@ input[type="text"], input[type="number"] {
     background-color: #f8fafc;
 }
 
-input[type="text"]:focus, input[type="number"]:focus {
+input[type="text"]:focus,
+input[type="number"]:focus {
     border-color: #5A0A17;
     background-color: #ffffff;
     box-shadow: 0 0 0 3px rgba(90, 10, 23, 0.12);
@@ -125,7 +137,7 @@ input[type="text"]:focus, input[type="number"]:focus {
 /* Botones interactivos con tus colores */
 button {
     padding: 10px 18px;
-    background-color: #5A0A17; 
+    background-color: #5A0A17;
     color: #ffffff;
     border: none;
     border-radius: 8px;
@@ -146,30 +158,33 @@ button:active {
 }
 
 /* Botones secundarios (como Ver Todos o Limpiar) */
-button[onclick*="value=''"], button[type="reset"] {
+button[onclick*="value=''"],
+button[type="reset"] {
     background-color: #e2e8f0;
     color: #475569;
 }
-button[onclick*="value=''"]:hover, button[type="reset"]:hover {
+
+button[onclick*="value=''"]:hover,
+button[type="reset"]:hover {
     background-color: #cbd5e1;
     color: #1e293b;
 }
 
 /*4. TABLA DE LIBROS */
-  
+
 table {
     width: 100%;
-    border-collapse: collapse; 
+    border-collapse: collapse;
     background-color: #ffffff;
     border-radius: 12px;
-    overflow: hidden; 
+    overflow: hidden;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.04);
-    border: none !important; 
+    border: none !important;
     margin: 20px 0;
 }
 
 th {
-    background-color: #5A0A17; 
+    background-color: #5A0A17;
     color: #ffffff;
     font-weight: 600;
     text-align: left;
@@ -180,7 +195,7 @@ th {
 
 td {
     padding: 14px 16px;
-    border-bottom: 1px solid #f1f5f9; 
+    border-bottom: 1px solid #f1f5f9;
     color: #4a5568;
     font-size: 14px;
 }
@@ -192,7 +207,7 @@ tr:nth-child(even) {
 
 
 tr:hover td {
-    background-color: #fff5f5; 
+    background-color: #fff5f5;
     color: #2d3748;
 }
 
@@ -204,7 +219,7 @@ td button {
 }
 
 
-   /*5. PANEL DE ADMINISTRADOR (FORMULARIO ABAJO)*/
+/*5. PANEL DE ADMINISTRADOR (FORMULARIO ABAJO)*/
 #adminPanel {
     background-color: #ffffff;
     padding: 30px;
@@ -234,7 +249,7 @@ td button {
 
 /* Contenedor de botones del formulario de administración */
 #formLibro button {
-    grid-column: span 1; 
+    grid-column: span 1;
     margin-top: 10px;
     padding: 12px;
 }

@@ -2,20 +2,28 @@
    1. ESTILOS GENERALES Y FONDO DE LA PÁGINA
    ========================================================================== */
 @keyframes fadeInPage {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 body {
     margin: 0;
     padding: 0;
     font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    background-color: #f8fafc; 
+    background-color: #f8fafc;
     color: #333333;
 }
 
-h2, h3 {
-    color: #280101; 
+h2,
+h3 {
+    color: #280101;
     font-weight: 700;
 }
 
@@ -75,31 +83,34 @@ nav button {
 }
 
 nav button:hover {
-    background-color: #7e091c; 
+    background-color: #7e091c;
     border-color: transparent;
 }
 
 /* ==========================================================================
    3. CONTENEDOR PRINCIPAL
    ========================================================================== */
-body > h2, body > h3, #formUsuario, table {
+body>h2,
+body>h3,
+#formUsuario,
+table {
     max-width: 1100px;
     margin-left: auto;
     margin-right: auto;
     animation: fadeInPage 0.5s ease-out forwards;
 }
 
-body > h2 {
+body>h2 {
     margin-top: 30px;
     padding: 0 20px;
 }
 
-body > h3 {
+body>h3 {
     padding: 0 20px;
     margin-bottom: 15px;
 }
 
-body > hr {
+body>hr {
     max-width: 1100px;
     margin: 25px auto;
 }
@@ -120,7 +131,8 @@ body > hr {
     margin-bottom: 30px;
 }
 
-#formUsuario input, #formUsuario select {
+#formUsuario input,
+#formUsuario select {
     flex: 1;
     min-width: 150px;
     padding: 12px 14px;
@@ -132,7 +144,8 @@ body > hr {
     background-color: #f8fafc;
 }
 
-#formUsuario input:focus, #formUsuario select:focus {
+#formUsuario input:focus,
+#formUsuario select:focus {
     border-color: #5A0A17;
     background-color: #ffffff;
     box-shadow: 0 0 0 3px rgba(90, 10, 23, 0.12);
@@ -140,7 +153,7 @@ body > hr {
 
 #formUsuario button {
     padding: 12px 24px;
-    background-color: #5A0A17; 
+    background-color: #5A0A17;
     color: #ffffff;
     border: none;
     border-radius: 8px;
@@ -165,17 +178,17 @@ body > hr {
    ========================================================================== */
 table {
     width: 100%;
-    border-collapse: collapse; 
+    border-collapse: collapse;
     background-color: #ffffff;
     border-radius: 12px;
-    overflow: hidden; 
+    overflow: hidden;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.04);
-    border: none !important; 
+    border: none !important;
     margin: 20px auto 40px auto;
 }
 
 th {
-    background-color: #5A0A17; 
+    background-color: #5A0A17;
     color: #ffffff;
     font-weight: 600;
     text-align: left;
@@ -186,7 +199,7 @@ th {
 
 td {
     padding: 14px 16px;
-    border-bottom: 1px solid #f1f5f9; 
+    border-bottom: 1px solid #f1f5f9;
     color: #4a5568;
     font-size: 14px;
 }
@@ -196,7 +209,7 @@ tr:nth-child(even) {
 }
 
 tr:hover td {
-    background-color: #fff5f5; 
+    background-color: #fff5f5;
     color: #2d3748;
 }
 

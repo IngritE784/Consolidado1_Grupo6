@@ -36,7 +36,7 @@ export const actualizarLibro = async (req, res) => {
     try {
         const { id } = req.params;
         const { codigo, titulo, autor, categoria, cantidad } = req.body;
-        
+
         const libro = await Libro.findByPk(id);
         if (!libro) return res.status(404).json({ error: 'Libro no encontrado.' });
 
@@ -50,7 +50,7 @@ export const actualizarLibro = async (req, res) => {
 export const eliminarLibro = async (req, res) => {
     try {
         const { id } = req.params;
-        
+
         const libro = await Libro.findByPk(id);
         if (!libro) return res.status(404).json({ error: 'Libro no encontrado.' });
 

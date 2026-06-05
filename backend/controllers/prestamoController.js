@@ -3,6 +3,7 @@ import crypto from 'crypto'; // <-- IMPORTA CRYPTO AQUÍ
 
 export const solicitarPrestamo = async (req, res) => {
     try {
+
         const { libro_id, fecha_devolucion } = req.body;
         const usuario_id = req.usuario.id;
 
@@ -80,7 +81,7 @@ export const aprobarPrestamo = async (req, res) => {
         const prestamo = await Prestamo.findByPk(id);
 
         if (!prestamo) return res.status(404).json({ error: 'Préstamo no encontrado.' });
-        
+
         // Cambia el estado de 'pendiente' a 'prestado'
         await prestamo.update({ estado: 'prestado' });
 
