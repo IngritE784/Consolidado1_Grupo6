@@ -3,11 +3,19 @@ document.addEventListener('DOMContentLoaded', () => {
     verificarRolAdmin();
 });
 
-async function cargarLibros() {
-    const res = await fetch('/api/libros', { headers: getAuthHeaders() });
+async function cargarLibros(busqueda = '') {
+    // Si hay búsqueda, agregamos el parámetro a la URL
+    const url = busqueda ? `/api/libros?titulo=${encodeURIComponent(busqueda)}` : '/api/libros';
+    
+    const res = await fetch(url, { headers: getAuthHeaders() });
     const libros = await res.json();
     const tbody = document.getElementById('tablaLibros');
     tbody.innerHTML = '';
+
+    if (libros.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;">No se encontraron libros.</td></tr>';
+        return;
+    }
 
     libros.forEach(l => {
         tbody.innerHTML += `
@@ -20,6 +28,12 @@ async function cargarLibros() {
                 <td><button onclick="solicitar(${l.id})" ${l.cantidad <= 0 ? 'disabled' : ''}>Solicitar Préstamo</button></td>
             </tr>`;
     });
+}
+
+// Nueva función que lee la barra de búsqueda
+function buscarLibros() {
+    const texto = document.getElementById('inputBusqueda').value;
+    cargarLibros(texto);
 }
 
 async function solicitar(id) {

@@ -116,6 +116,23 @@ section label {
     margin-right: 10px;
 }
 
+.search-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 25px;
+    background-color: #ffffff;
+    padding: 15px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+    border: 1px solid #eef2f6;
+}
+
+.search-section input {
+    flex: 1;
+    max-width: 400px;
+}
+
 input[type="text"],
 input[type="number"] {
     padding: 10px 14px;
@@ -159,13 +176,15 @@ button:active {
 
 /* Botones secundarios (como Ver Todos o Limpiar) */
 button[onclick*="value=''"],
-button[type="reset"] {
+button[type="reset"],
+.btn-secondary {
     background-color: #e2e8f0;
     color: #475569;
 }
 
 button[onclick*="value=''"]:hover,
-button[type="reset"]:hover {
+button[type="reset"]:hover,
+.btn-secondary:hover {
     background-color: #cbd5e1;
     color: #1e293b;
 }
