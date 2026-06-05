@@ -4,12 +4,7 @@ import dotenv from "dotenv";
 import path from "path";
 import { fileURLToPath } from "url";
 
-// Añadir en la sección de importaciones:
-import libroRoutes from "./routes/libroRoutes.js";
-import prestamoRoutes from "./routes/prestamoRoutes.js";
-
-
-
+// Importamos base de datos y rutas
 dotenv.config();
 
 // Importamos base de datos y rutas
