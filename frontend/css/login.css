@@ -1,0 +1,182 @@
+    /* ==========================================================================
+    1. ANIMACIONES BASE (KEYFRAMES)
+    ========================================================================== */
+    /* Animación para que la tarjeta aparezca flotando suavemente desde abajo */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Animación sutil de pulso para el botón principal */
+    @keyframes pulseGlow {
+        0% {
+            box-shadow: 0 4px 12px rgba(90, 10, 23, 0.2);
+        }
+        50% {
+            box-shadow: 0 4px 20px rgba(90, 10, 23, 0.4);
+        }
+        100% {
+            box-shadow: 0 4px 12px rgba(90, 10, 23, 0.2);
+        }
+    }
+
+
+    /* ==========================================================================
+    2. FONDO Y CENTRADO DE LA PÁGINA (AHORA MÁS CLARO Y LIMPIO)
+    ========================================================================== */
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        /* Un degradado claro y suave: de un blanco humo a un gris con un levísimo matiz vino */
+        background: linear-gradient(135deg, #5A0A17 0%, #7c081c 50%, #5A0A17 100%); 
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+    }
+
+
+    /* ==========================================================================
+    3. TARJETA PRINCIPAL CON ANIMACIÓN DE ENTRADA
+    ========================================================================== */
+    .container-Login {
+        background-color: #ffffff;
+        padding: 40px;
+        border-radius: 16px; 
+        /* Sombra suave y natural para fondos claros */
+        box-shadow: 0 15px 35px rgba(90, 10, 23, 0.08), 0 5px 15px rgba(0, 0, 0, 0.05); 
+        width: 100%;
+        max-width: 380px;
+        box-sizing: border-box;
+        
+        /* Aplicamos la animación de entrada */
+        animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    /* Enlace de "Volver al Inicio" */
+    .container-Login nav a {
+        color: #5A0A17; /* Tu color vino principal */
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        display: inline-block;
+    }
+
+    .container-Login nav a:hover {
+        color: #801424; /* Un vino más encendido al pasar el mouse */
+        transform: translateX(-3px); /* Se mueve un poquito a la izquierda */
+    }
+
+    /* Línea divisoria */
+    .container-Login hr {
+        border: 0;
+        height: 1px;
+        background: linear-gradient(to right, #5A0A17, #e5edf2, transparent); 
+        margin: 15px 0 25px 0;
+    }
+
+    /* Título de Iniciar Sesión */
+    .container-Login h2 {
+        margin: 0 0 25px 0;
+        color: #1a1a1a; 
+        text-align: center;
+        font-size: 26px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+
+
+    /* ==========================================================================
+    4. FORMULARIO E INPUTS INTERACTIVOS
+    ========================================================================== */
+    #formLogin {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #formLogin label {
+        color: #555555; 
+        font-size: 13px;
+        font-weight: 600;
+        text-transform: uppercase; 
+        letter-spacing: 0.5px;
+        margin-bottom: 6px;
+    }
+
+    #formLogin input {
+        width: 100%;
+        padding: 14px;
+        border: 1.5px solid #dcdcdc; 
+        border-radius: 8px;
+        font-size: 15px;
+        box-sizing: border-box;
+        background-color: #fbfbfb;
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); 
+        margin-bottom: 4px;
+    }
+
+    /* Efecto animado al hacer clic para escribir */
+    #formLogin input:focus {
+        border-color: #5A0A17; /* El borde se pinta de tu color vino */
+        outline: none;
+        background-color: #ffffff;
+        /* Crea un resplandor vino muy sutil y elegante */
+        box-shadow: 0 0 0 4px rgba(90, 10, 23, 0.12); 
+        transform: translateY(-2px); /* El campo sube 2 píxeles */
+    }
+
+
+    /* ==========================================================================
+    5. BOTÓN PRINCIPAL CON EFECTO DE PULSO Y ELEVACIÓN
+    ========================================================================== */
+    #formLogin button {
+        width: 100%;
+        padding: 15px;
+        background-color: #5A0A17; /* Tu color vino firme */
+        color: #ffffff;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        margin-top: 15px;
+        
+        /* Vinculamos las transiciones y la animación de pulso constante */
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        animation: pulseGlow 2s infinite;
+    }
+
+    /* Efectos al pasar el mouse por encima del botón */
+    #formLogin button:hover {
+        background-color: #731020; 
+        box-shadow: 0 8px 20px rgba(90, 10, 23, 0.3);
+        transform: translateY(-3px); /* Se eleva con elegancia */
+    }
+
+    /* Efecto de compresión inmediata al hacer clic */
+    #formLogin button:active {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(90, 10, 23, 0.2);
+    }
+
+
+    /* ==========================================================================
+    6. MENSAJES DE RESPUESTA
+    ========================================================================== */
+    #mensaje {
+        margin-top: 20px;
+        text-align: center;
+        font-size: 14px;
+        font-weight: 600;
+        min-height: 20px;
+        color: #5A0A17;
+    }

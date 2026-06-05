@@ -1,0 +1,159 @@
+/* ==========================================================================
+   1. ESTILOS GENERALES Y FONDO DE LA PÁGINA (BLANCO PURO)
+   ========================================================================== */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', 'Segoe UI', Helvetica, Arial, sans-serif;
+    background-color: #ffffff; 
+    color: #1f1f1f;
+}
+
+main, body > form, body {
+    display: flex;
+    flex-direction: column;
+}
+
+#formRegistro {
+    max-width: 450px;
+    margin: 60px auto;
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+body > hr {
+    display: none !important;
+}
+
+body > h2 {
+    color: #280101;
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: -20px;
+    font-size: 30px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    text-transform: uppercase;
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ==========================================================================
+   2. BARRA DE NAVEGACIÓN COMPACTA (NAV)
+   ========================================================================== */
+nav {
+    background: linear-gradient(135deg, #280101 0%, #5A0A17 100%);
+    padding: 15px 40px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 4px 20px rgba(90, 10, 23, 0.15);
+}
+
+nav a {
+    color: #f3e6e8;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+nav a:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    transform: translateX(-3px);
+}
+
+/* ==========================================================================
+   3. MODO FLASHCARDS (TARJETA DE REGISTRO CON TU DEGRADADO VINO IMPONENTE)
+   ========================================================================== */
+#formRegistro {
+    /* Tu degradado exacto solicitado para el fondo del cuadro */
+    background: linear-gradient(135deg, #5A0A17 0%, #7c081c 50%, #5A0A17 100%) !important; 
+    padding: 40px;
+    border-radius: 16px;
+    box-sizing: border-box;
+    box-shadow: 0 20px 45px rgba(90, 10, 23, 0.25), 0 1px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    
+    display: flex;
+    flex-direction: column;
+    gap: 16px; 
+}
+
+#formRegistro:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 30px 55px rgba(90, 10, 23, 0.35), 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* ==========================================================================
+   4. ALINEACIÓN VERTICAL PROFESIONAL Y TEXTOS EN BLANCO
+   ========================================================================== */
+#formRegistro br {
+    display: none !important;
+}
+
+label {
+    display: block;
+    font-weight: 700;
+    color: #ffffff; /* Texto en blanco para leerse perfecto sobre el fondo vino */
+    margin-bottom: 2px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+input[type="text"], 
+input[type="email"], 
+input[type="password"] {
+    width: 100%;
+    padding: 14px;
+    border: 1.5px solid rgba(255, 255, 255, 0.2); 
+    border-radius: 8px;
+    font-size: 15px;
+    outline: none;
+    transition: all 0.3s ease;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    color: #1f1f1f;
+    font-family: inherit;
+    margin-bottom: 4px;
+}
+
+input:focus {
+    border-color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.25);
+}
+
+/* ==========================================================================
+   5. BOTÓN DE REGISTRO EN ALTO CONTRASTE (BLANCO/PLATA)
+   ========================================================================== */
+#formRegistro button,
+button[type="submit"] {
+    width: 100%;
+    padding: 16px;
+    background-color: #ffffff !important; /* Fondo blanco para romper con el degradado del cuadro */
+    color: #7c081c !important;           /* Letras en tu tono de rojo vino */
+    border: none !important;
+    border-radius: 8px !important;
+    font-size: 14px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    margin-top: 10px;
+    display: block;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+}
+
+#formRegistro button:hover {
+    background-color: #f4f3f0 !important; /* Blanco hueso suave en hover */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    transform: translateY(-2px);
+}

@@ -1,0 +1,246 @@
+/*ESTILOS GENERALES Y ANIMACIÓN DE ENTRADA */
+@keyframes fadeInPage {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f8fafc; 
+    color: #333333;
+}
+
+main {
+    max-width: 1100px;
+    margin: 30px auto;
+    padding: 0 20px;
+    animation: fadeInPage 0.5s ease-out forwards;
+}
+
+h1, h2 {
+    color: #280101; 
+    font-weight: 700;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: linear-gradient(to right, #5A0A17, #e2e8f0, transparent);
+    margin: 25px 0;
+}
+
+/* BARRA DE NAVEGACIÓN (NAV) */
+nav {
+    background: linear-gradient(135deg, #280101 0%, #5A0A17 100%);
+    padding: 15px 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 4px 12px rgba(90, 10, 23, 0.2);
+    color: #f3e6e8;
+}
+
+nav h2 {
+    color: #ffffff;
+    margin: 0;
+    font-size: 22px;
+    letter-spacing: -0.5px;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+}
+
+nav a, nav ul li a {
+    color: #f3e6e8;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+nav a:hover, nav ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+}
+
+nav button {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    margin: 0;
+}
+
+nav button:hover {
+    background-color: #7e091c; 
+    border-color: transparent;
+}
+
+/*  BUSCADOR  */
+section {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+    border: 1px solid #eef2f6;
+    margin-bottom: 20px;
+}
+
+section label {
+    font-weight: 600;
+    color: #4a4a4a;
+    margin-right: 10px;
+}
+
+input[type="text"], input[type="number"] {
+    padding: 10px 14px;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    transition: all 0.3s ease;
+    background-color: #f8fafc;
+}
+
+input[type="text"]:focus, input[type="number"]:focus {
+    border-color: #5A0A17;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(90, 10, 23, 0.12);
+}
+
+/* Botones interactivos con tus colores */
+button {
+    padding: 10px 18px;
+    background-color: #5A0A17; 
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-left: 5px;
+}
+
+button:hover {
+    background-color: #731020;
+    transform: translateY(-1px);
+}
+
+button:active {
+    transform: translateY(1px);
+}
+
+/* Botones secundarios (como Ver Todos o Limpiar) */
+button[onclick*="value=''"], button[type="reset"] {
+    background-color: #e2e8f0;
+    color: #475569;
+}
+button[onclick*="value=''"]:hover, button[type="reset"]:hover {
+    background-color: #cbd5e1;
+    color: #1e293b;
+}
+
+/*4. TABLA DE LIBROS */
+  
+table {
+    width: 100%;
+    border-collapse: collapse; 
+    background-color: #ffffff;
+    border-radius: 12px;
+    overflow: hidden; 
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.04);
+    border: none !important; 
+    margin: 20px 0;
+}
+
+th {
+    background-color: #5A0A17; 
+    color: #ffffff;
+    font-weight: 600;
+    text-align: left;
+    padding: 16px;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+}
+
+td {
+    padding: 14px 16px;
+    border-bottom: 1px solid #f1f5f9; 
+    color: #4a5568;
+    font-size: 14px;
+}
+
+
+tr:nth-child(even) {
+    background-color: #f8fafc;
+}
+
+
+tr:hover td {
+    background-color: #fff5f5; 
+    color: #2d3748;
+}
+
+/* Botones de acción dentro de la tabla (como Prestar o Editar) */
+td button {
+    padding: 6px 12px;
+    font-size: 12px;
+    border-radius: 6px;
+}
+
+
+   /*5. PANEL DE ADMINISTRADOR (FORMULARIO ABAJO)*/
+#adminPanel {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(90, 10, 23, 0.05);
+    border: 1.5px solid #f1f5f9;
+    margin-top: 30px;
+}
+
+#formLibro {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 15px;
+    align-items: center;
+    max-width: 600px;
+}
+
+#formLibro label {
+    font-weight: 600;
+    color: #4a4a4a;
+}
+
+#formLibro input {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Contenedor de botones del formulario de administración */
+#formLibro button {
+    grid-column: span 1; 
+    margin-top: 10px;
+    padding: 12px;
+}
+
+#mensajeLibro {
+    margin-top: 15px;
+    font-weight: 600;
+    color: #5A0A17;
+}

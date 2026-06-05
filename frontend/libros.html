@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Catálogo de Libros</title>
+    <link rel="stylesheet" href="css/libros.css">
+</head>
+<body>
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="prestamos.html">Ver Préstamos</a>
+        <a href="usuarios.html" id="linkUsuarios" style="display: none;">Gestión de Usuarios</a>
+        <button onclick="cerrarSesion()">Cerrar Sesión</button>
+    </nav>
+    <hr>
+    <h2>Catálogo de Biblioteca</h2>
+    
+    <div id="adminPanel" style="display: none;">
+        <h3>Crear Nuevo Libro</h3>
+        <form id="formLibro">
+            <input type="text" id="codigo" placeholder="Código" required>
+            <input type="text" id="titulo" placeholder="Título" required>
+            <input type="text" id="autor" placeholder="Autor" required>
+            <input type="text" id="categoria" placeholder="Categoría" required>
+            <input type="number" id="cantidad" placeholder="Cantidad" required>
+            <button type="submit">Guardar Libro</button>
+        </form>
+        <hr>
+    </div>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Código</th>
+                <th>Título</th>
+                <th>Autor</th>
+                <th>Stock</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody id="tablaLibros"></tbody>
+    </table>
+
+    <script src="js/session.js"></script>
+    <script src="js/libros.js"></script>
+</body>
+</html>

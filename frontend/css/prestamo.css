@@ -1,0 +1,300 @@
+/* ==========================================================================
+   1. ESTILOS GENERALES Y FONDO DE LA PÁGINA (BLANCO PURO)
+   ========================================================================== */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', 'Segoe UI', Helvetica, Arial, sans-serif;
+    background-color: #ffffff; 
+    color: #1f1f1f;
+}
+
+main {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+main > hr, 
+#panelAdmin > hr {
+    display: none !important;
+}
+
+main > h1 {
+    color: #280101;
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 34px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    text-transform: uppercase;
+}
+
+/* ==========================================================================
+   2. BARRA DE NAVEGACIÓN (NAV)
+   ========================================================================== */
+nav {
+    background: linear-gradient(135deg, #280101 0%, #5A0A17 100%);
+    padding: 15px 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 4px 20px rgba(90, 10, 23, 0.15);
+    color: #f3e6e8;
+}
+
+nav h2 {
+    color: #ffffff; 
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 15px;
+}
+
+nav a, nav ul li a {
+    color: #f3e6e8;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+nav a:hover, nav ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+}
+
+nav button {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    margin: 0;
+}
+
+nav button:hover {
+    background-color: #7e091c; 
+    border-color: transparent;
+}
+
+/* ==========================================================================
+   3. MODO FLASHCARDS (TARJETAS GRIS CEMENTO CÁLIDO)
+   ========================================================================== */
+#seccionSolicitar, 
+#seccionPrestamos, 
+#panelAdmin {
+    background-color: #F4F3F0; 
+    padding: 40px;
+    border-radius: 16px;
+    color: #2b2b2b;
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.06), 0 1px 12px rgba(90, 10, 23, 0.03);
+    border: 1px solid #e3e2de;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#seccionSolicitar:hover, 
+#seccionPrestamos:hover, 
+#panelAdmin:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 22px 45px rgba(0, 0, 0, 0.09), 0 4px 15px rgba(90, 10, 23, 0.04);
+}
+
+main h2 {
+    color: #5A0A17; 
+    font-size: 18px;
+    font-weight: 800;
+    margin-top: 0;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    border-left: 5px solid #5A0A17;
+    padding-left: 15px;
+}
+
+/* ==========================================================================
+   4. ALINEACIÓN VERTICAL DE FORMULARIOS
+   ========================================================================== */
+#formSolicitar, 
+#formCambiarEstado {
+    display: flex;
+    flex-direction: column;
+    gap: 14px; 
+}
+
+#formSolicitar br, 
+#formCambiarEstado br,
+#seccionPrestamos br {
+    display: none !important;
+}
+
+label {
+    display: block;
+    font-weight: 700;
+    color: #4a4545;
+    margin-bottom: 2px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+input[type="text"], 
+input[type="date"], 
+input[type="number"], 
+select {
+    width: 100%;
+    padding: 14px;
+    border: 1.5px solid #d1cfc9; 
+    border-radius: 8px;
+    font-size: 15px;
+    outline: none;
+    transition: all 0.3s ease;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    color: #1f1f1f;
+    font-family: inherit;
+}
+
+input:focus, 
+select:focus {
+    border-color: #5A0A17;
+    box-shadow: 0 0 0 4px rgba(90, 10, 23, 0.15);
+}
+
+/* ==========================================================================
+   5. BOTONES PRINCIPALES CORREGIDOS CON TU COLOR (#7E091C)
+   ========================================================================== */
+#formSolicitar button, 
+#formCambiarEstado button,
+button[type="submit"] {
+    width: 100%;
+    padding: 16px;
+    background-color: #7E091C !important; 
+    background: #7E091C !important;
+    color: #ffffff !important;           
+    border: none !important;
+    border-radius: 8px !important;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    margin-top: 10px;
+    display: block;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 14px rgba(126, 9, 28, 0.25);
+}
+
+#formSolicitar button:hover, 
+#formCambiarEstado button:hover {
+    background-color: #5A0A17 !important; 
+    background: #5A0A17 !important;
+    box-shadow: 0 6px 18px rgba(90, 10, 23, 0.45);
+    transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   6. SECCIÓN HISTORIAL, FILTROS Y TABLAS
+   ========================================================================== */
+#seccionPrestamos {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#filtroEstado {
+    width: 100%;
+    max-width: 300px;
+}
+
+#seccionPrestamos button {
+    width: 100%;
+    max-width: 200px;
+    padding: 12px;
+    background-color: rgba(126, 9, 28, 0.08) !important;
+    color: #7E091C !important; 
+    border: 1px solid rgba(126, 9, 28, 0.2) !important;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#seccionPrestamos button:hover {
+    background-color: #7E091C !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 12px rgba(126, 9, 28, 0.2);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+    border: none !important;
+    margin-top: 15px;
+}
+
+th {
+    background-color: #5A0A17; 
+    color: #ffffff;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-align: left;
+    padding: 16px;
+    font-size: 13px;
+    border: none !important;
+}
+
+td {
+    padding: 16px;
+    border-bottom: 1px solid #eef0f2;
+    color: #2b2b2b;
+    font-size: 14px;
+    background-color: #ffffff;
+}
+
+tr:nth-child(even) td {
+    background-color: #faf9f6;
+}
+
+tr:hover td {
+    background-color: #fff2f3;
+}
+
+#mensajeSolicitar, 
+#mensajeAdmin {
+    margin-top: 10px;
+    text-align: center;
+    font-weight: 600;
+    color: #7E091C;
+}

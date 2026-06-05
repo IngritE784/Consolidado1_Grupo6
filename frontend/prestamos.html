@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestión de Préstamos</title>
+    <link rel="stylesheet" href="css/prestamo.css">
+</head>
+<body>
+    <nav>
+        <a href="libros.html">Catálogo Libros</a>
+        <a href="usuarios.html" id="linkUsuarios" style="display: none;">Gestión de Usuarios</a>
+        <button onclick="cerrarSesion()">Cerrar Sesión</button>
+    </nav>
+    <hr>
+    <h2>Préstamos Registrados</h2>
+    
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Usuario</th>
+                <th>Libro</th>
+                <th>Fecha Devolución</th>
+                <th>Estado</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody id="tablaPrestamos"></tbody>
+    </table>
+
+    <script src="js/session.js"></script>
+    <script src="js/prestamos.js"></script>
+</body>
+</html>

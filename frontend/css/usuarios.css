@@ -1,0 +1,218 @@
+/* ==========================================================================
+   1. ESTILOS GENERALES Y FONDO DE LA PÁGINA
+   ========================================================================== */
+@keyframes fadeInPage {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f8fafc; 
+    color: #333333;
+}
+
+h2, h3 {
+    color: #280101; 
+    font-weight: 700;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: linear-gradient(to right, #5A0A17, #e2e8f0, transparent);
+    margin: 25px 0;
+}
+
+/* ==========================================================================
+   2. BARRA DE NAVEGACIÓN (NAV)
+   ========================================================================== */
+nav {
+    background: linear-gradient(135deg, #280101 0%, #5A0A17 100%);
+    padding: 15px 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 4px 12px rgba(90, 10, 23, 0.2);
+    color: #f3e6e8;
+}
+
+nav h2 {
+    color: #ffffff;
+    margin: 0;
+    font-size: 22px;
+    letter-spacing: -0.5px;
+}
+
+nav a {
+    color: #f3e6e8;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+nav a:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+}
+
+nav button {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    margin: 0;
+}
+
+nav button:hover {
+    background-color: #7e091c; 
+    border-color: transparent;
+}
+
+/* ==========================================================================
+   3. CONTENEDOR PRINCIPAL
+   ========================================================================== */
+body > h2, body > h3, #formUsuario, table {
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+    animation: fadeInPage 0.5s ease-out forwards;
+}
+
+body > h2 {
+    margin-top: 30px;
+    padding: 0 20px;
+}
+
+body > h3 {
+    padding: 0 20px;
+    margin-bottom: 15px;
+}
+
+body > hr {
+    max-width: 1100px;
+    margin: 25px auto;
+}
+
+/* ==========================================================================
+   4. FORMULARIO DE USUARIOS
+   ========================================================================== */
+#formUsuario {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+    border: 1px solid #eef2f6;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+#formUsuario input, #formUsuario select {
+    flex: 1;
+    min-width: 150px;
+    padding: 12px 14px;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    transition: all 0.3s ease;
+    background-color: #f8fafc;
+}
+
+#formUsuario input:focus, #formUsuario select:focus {
+    border-color: #5A0A17;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(90, 10, 23, 0.12);
+}
+
+#formUsuario button {
+    padding: 12px 24px;
+    background-color: #5A0A17; 
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+#formUsuario button:hover {
+    background-color: #731020;
+    transform: translateY(-1px);
+}
+
+#formUsuario button:active {
+    transform: translateY(1px);
+}
+
+/* ==========================================================================
+   5. TABLA DE USUARIOS
+   ========================================================================== */
+table {
+    width: 100%;
+    border-collapse: collapse; 
+    background-color: #ffffff;
+    border-radius: 12px;
+    overflow: hidden; 
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.04);
+    border: none !important; 
+    margin: 20px auto 40px auto;
+}
+
+th {
+    background-color: #5A0A17; 
+    color: #ffffff;
+    font-weight: 600;
+    text-align: left;
+    padding: 16px;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+}
+
+td {
+    padding: 14px 16px;
+    border-bottom: 1px solid #f1f5f9; 
+    color: #4a5568;
+    font-size: 14px;
+}
+
+tr:nth-child(even) {
+    background-color: #f8fafc;
+}
+
+tr:hover td {
+    background-color: #fff5f5; 
+    color: #2d3748;
+}
+
+/* Botones en la tabla (Eliminar) */
+td button {
+    padding: 8px 14px;
+    background-color: #e53e3e;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+td button:hover {
+    background-color: #c53030;
+}

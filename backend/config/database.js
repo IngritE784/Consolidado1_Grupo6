@@ -57,6 +57,7 @@ const Libro = sequelize.define('Libro', {
 // 3. Tabla: prestamos
 const Prestamo = sequelize.define('Prestamo', {
     id: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
+    codigo: { type: DataTypes.STRING(20), allowNull: false }, // <-- AÑADE ESTA LÍNEA
     fecha_prestamo: { type: DataTypes.DATEONLY },
     fecha_devolucion: { type: DataTypes.DATEONLY },
     estado: { type: DataTypes.ENUM('pendiente', 'prestado', 'devuelto'), defaultValue: 'pendiente' }
